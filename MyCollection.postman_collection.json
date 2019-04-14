@@ -1,0 +1,312 @@
+{
+	"info": {
+		"_postman_id": "b90b5884-831b-4aa7-9bb2-fbb72d952c1d",
+		"name": "MyCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "For GET Requests",
+			"item": [
+				{
+					"name": "GET UserList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6063f67-5525-40e1-8528-300eedd7eb6e",
+								"exec": [
+									"console.log(\"Hello World\");",
+									"",
+									"let urlVal = pm.variables.get(\"url\");",
+									"console.log(\"Value for URL Variable is: \" + urlVal);",
+									"",
+									"pm.variables.set(\"name\", \"POSTMAN\");",
+									"console.log(\"Value of name is: \" + pm.variables.get(\"name\"));",
+									"",
+									"let globalVar = pm.globals.get(\"env\");",
+									"console.log(\"Value of the global variable env is: \" + globalVar);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users?page=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SingleUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "60430baa-5981-4744-a69f-eb1ff32a6c81",
+								"exec": [
+									"pm.test(\"Verify that the Response time is less than 2000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+									"});",
+									"",
+									"pm.test(\"Verify that Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/api/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "For POST Requests",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}"
+						},
+						"url": {
+							"raw": "https://reqres.in/{{endpoint}}",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET SingleUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GET",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 13 Apr 2019 19:39:21 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "__cfduid=d4c4f8b419fc65f96bca14f7e250c8bf01555184361; expires=Sun, 12-Apr-20 19:39:21 GMT; path=/; domain=.reqres.in; HttpOnly"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"89-bSBFK27ZbQL+K8fMuJn/jZrcUuk\""
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "4c6fe7d17e4ba90c-SIN"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"first_name\": \"Janet\",\n        \"last_name\": \"Weaver\",\n        \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "GET UserList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users?page=2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6c67b632-d7d4-42ad-b5b1-12212a60b1ea",
+				"type": "text/javascript",
+				"exec": [
+					"console.log(\"Hello World\");",
+					"",
+					"let urlVal = pm.variables.get(\"url\");",
+					"console.log(\"Value for URL Variable is: \" + urlVal);",
+					"",
+					"pm.variables.set(\"name\", \"POSTMAN\");",
+					"console.log(\"Value of name is: \" + pm.variables.get(\"name\"));",
+					"",
+					"let globalVar = pm.globals.get(\"env\");",
+					"console.log(\"Value of the global variable env is: \" + globalVar);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e64ce821-301a-4fa7-9eff-80d904832f08",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "8497a61a-7eff-4303-9e56-1efac9c2c860",
+			"key": "url",
+			"value": "https://reqres.in",
+			"type": "string"
+		}
+	]
+}
